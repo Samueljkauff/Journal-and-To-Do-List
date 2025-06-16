@@ -11,7 +11,7 @@
                     <p class="text-gray-300 size">This is a simple application to keep track of your life!</p>
                     <p class="text-gray-500 text-sm mt-2">Click the Three bars to start keeping track of your past Present and Future.</p>
                 </div>
-
+                <Footer/>
             </div>
         </div>
     </div>
@@ -19,4 +19,5 @@
 
 <script setup lang="ts">
 import NavBar from '@/Components/NavBar.vue';
+import Footer from '@/Components/Footer.vue';   
 </script>
