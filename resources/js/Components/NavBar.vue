@@ -1,9 +1,9 @@
 <template>
-    <div class="text-white min-h-screen flex items-center justify-center">
-        <nav :class="{ 'w-40': onNavClick, 'w-16': !onNavClick }"
+    <div class="text-white min-h-screen flex flex-1 justify-start z-10">
+        <nav :class="{ 'w-40': navClick, 'w-16': !navClick }"
             class="flex flex-col bg-slate-900 h-screen w-16 transition-all duration-300">
             <div
-                @click="onLogoClick"
+                @click="onNavClick"
                 class="flex justify-center py-4 hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:cursor-pointer"
             >
                 <i class="fas fa-bars text-2xl"></i>
@@ -14,7 +14,7 @@
                 class="flex flex-col"
             >
                 <div
-                    v-if="onNavClick"
+                    v-if="navClick"
                     key="home"
                     class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
                 >
@@ -22,7 +22,7 @@
                     <p class="inline">Home</p>
                 </div>
                 <div
-                    v-if="onNavClick"
+                    v-if="navClick"
                     key="about"
                     class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
                 >
@@ -30,7 +30,7 @@
                     <p class="inline">About</p>
                 </div>
                 <div
-                    v-if="onNavClick"
+                    v-if="navClick"
                     key="profile"
                     class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
                 >
@@ -38,7 +38,7 @@
                     <p class="inline">Profile</p>
                 </div>
                 <div
-                    v-if="onNavClick"
+                    v-if="navClick"
                     key="settings"
                     class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
                 >
@@ -83,13 +83,12 @@ export default defineComponent({
     name: 'NavBar',
     data() {
         return {
-            onNavClick: false,
+            navClick: false,
         };
     },
     methods: {
-        onLogoClick() {
-            this.onNavClick = !this.onNavClick;
-            console.log('Logo clicked:', this.onNavClick);
+        onNavClick() {
+            this.navClick = !this.navClick;
         }
     }
 });
