@@ -6,15 +6,15 @@
         >
             <transition name="icon-container-slide">
                 <div
-                    v-if="true"
                     key="icon-container"
                     @click="onClick"
                     class="flex items-center justify-center w-8 h-8 rounded-full hover:bg-slate-700 transition-colors duration-300 cursor-pointer"
                 >
                     <span>
                         <i v-if="!clicked" class="fas fa-plus"></i>
-                        <i v-else class="fas fa-minus"></i>
+                        <i v-if="clicked" class="fas fa-minus"></i>
                     </span>
+                    
                 </div>
             </transition>
         </div>
