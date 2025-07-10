@@ -14,7 +14,6 @@
                         <i v-if="!clicked" class="fas fa-plus"></i>
                         <i v-if="clicked" class="fas fa-minus"></i>
                     </span>
-                    
                 </div>
             </transition>
         </div>
