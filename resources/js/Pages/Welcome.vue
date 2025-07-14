@@ -10,7 +10,7 @@
                 </Link>
                 <h1 class="text-3xl text-white mb-4">Welcome to the TooDoo</h1>
                 <p class="text-gray-300 size">This is a simple application to keep track of your life!</p>
-                <p class="text-gray-500 text-sm mt-2">Click the Three bars to start keeping track of your past Present and Future.</p>
+                <p class="text-gray-500 text-sm mt-2">Click the <i class="fas fa-calendar-days"></i> to start keeping track of your past Present and Future.</p>
             </div>
             <Footer/>
         </div>
@@ -20,5 +20,5 @@
 <script setup lang="ts">
 import NavBar from '@/Components/NavBar.vue';
 import Footer from '@/Components/Footer.vue';
-import { Link } from '@inertiajs/vue3'; 
+import { Link, Head } from '@inertiajs/vue3'; 
 </script>

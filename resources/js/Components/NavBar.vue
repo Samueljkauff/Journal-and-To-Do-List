@@ -13,38 +13,42 @@
                 tag="div"
                 class="flex flex-col"
             >
-                <div
+                <Link
                     v-if="navClick"
                     key="home"
-                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
+                    href="/dashboard"
+                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
                 >
                     <i class="fas fa-home inline" />
-                    <p class="inline">Home</p>
-                </div>
-                <div
+                    <p class="inline select-none">Home</p>
+                </Link>
+                <Link
                     v-if="navClick"
                     key="about"
-                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
+                    href="/about"
+                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
                 >
                     <i class="fas fa-info-circle inline" />
-                    <p class="inline">About</p>
-                </div>
-                <div
+                    <p class="inline select-none">About</p>
+                </Link>
+                <Link
                     v-if="navClick"
                     key="profile"
-                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
+                    href="/profile"
+                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
                 >
                     <i class="fas fa-user inline" />
-                    <p class="inline">Profile</p>
-                </div>
-                <div
+                    <p class="inline select-none">Profile</p>
+                </Link>
+                <Link
                     v-if="navClick"
                     key="settings"
-                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
+                    href="/settings"
+                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
                 >
                     <i class="fas fa-cog inline" />
-                    <p class="inline">Settings</p>
-                </div>
+                    <p class="inline select-none">Settings</p>
+                </Link>
             </transition-group>
         </nav>
     </div>
@@ -78,9 +82,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import '@fortawesome/fontawesome-free/css/all.css';
+import { Link, Head } from '@inertiajs/vue3';
 
 export default defineComponent({
     name: 'NavBar',
+    components: {
+        Link,
+        Head
+    },
     data() {
         return {
             navClick: false,
