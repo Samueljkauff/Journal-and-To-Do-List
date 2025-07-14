@@ -2,35 +2,33 @@
     <Head title="Welcome!" />
     <div class="text-white text-xl w-full bg-slate-900 rounded-xl p-6 flex flex-row items-center justify-center">
         <span
-            v-for="(label, key) in Tabs"
-            :key="key"
-            @click="setActiveTab(key)"
-            class="flex justify-center items-center select-none cursor-pointer p-5 min-w-[109px] max-h-[28px] hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:cursor-pointer"
+            v-for="tab in tabs"
+            :key="tab.key"
+            @click="setActiveTab(tab.key)"
+            class="flex justify-center items-center select-none cursor-pointer p-5 min-w-[109px] max-h-[28px] hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700"
             :class="{
-                'border-b border-white font-bold': activeTab === key,
-                'border-b border-gray-600': activeTab !== key
+                'border-b-2 border-white font-bold': activeTab === tab.key,
+                'border-b border-gray-600': activeTab !== tab.key
             }"
         >
-            {{ label }}
+            {{ tab.label }}
         </span>
     </div>
 </template>
 
 <script lang="ts">
-import { Link, Head } from '@inertiajs/vue3';
-
-const Tabs = {
-    past: 'Past',
-    present: 'Present',
-    future: 'Future',
-} as const;
+import { Head } from '@inertiajs/vue3';
 
 export default {
-    components: { Link, Head },
+    components: { Head },
     data() {
         return {
             activeTab: 'present',
-            Tabs,
+            tabs: [
+                { key: 'past', label: 'Past' },
+                { key: 'present', label: 'Present' },
+                { key: 'future', label: 'Future' },
+            ],
         };
     },
     methods: {
