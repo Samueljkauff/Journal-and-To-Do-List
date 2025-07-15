@@ -26,7 +26,7 @@ export default defineComponent({
         { key: 'month', label: 'Month' },
         { key: 'today', label: 'Today' },
       ],
-      activeView: 'month',
+      activeView: 'today',
     };
   },
   computed: {
