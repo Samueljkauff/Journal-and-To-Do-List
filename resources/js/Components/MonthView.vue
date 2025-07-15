@@ -4,7 +4,7 @@
         <hr class="pb-7"/>
         <div class="grid grid-cols-2">
             <div class="grid grid-cols-7">
-              <div v-for="day in getDaysOfMonth()" :key="day" class="aspect-square p-4 border border-white text-white rounded w-w-28 max-h-28">
+              <div v-for="day in getDaysOfMonth()" :key="day" class="aspect-square p-2 border border-white text-white w-w-28 max-h-28">
                 {{ day }}
               </div>
             <div>
