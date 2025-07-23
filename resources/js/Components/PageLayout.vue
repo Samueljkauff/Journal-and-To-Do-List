@@ -1,7 +1,7 @@
 <template>
     <Head title="{WHATEVER}" />
 
-    <div class="flex flex-col bg-slate-800 min-h-screen">
+    <div class="flex flex-col bg-black min-h-screen">
         <div class="flex justify-start h-full">
             <NavBar />
             <slot class="flex-1 flex flex-col">

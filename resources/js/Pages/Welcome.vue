@@ -1,6 +1,6 @@
 <template>
     <PageLayout>
-        <div class="w-full m-4 bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center">
+        <div class="w-full m-4 bg-gray-900 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center">
                 <Link href="/dashboard">
                     <i class="fas fa-calendar-days text-6xl text-green-500 mb-4"></i>
                 </Link>

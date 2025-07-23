@@ -5,7 +5,7 @@
       :key="view.key"
       @click="setActiveView(view.key)"
       :class="[
-        'cursor-pointer px-1 rounded-lg font-bold hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700',
+        'cursor-pointer px-1 rounded-lg font-bold hover:bg-gray-700 p-1',
         idex <= activeViewIndex ? 'text-white' : 'text-gray-600'
       ]"
     >

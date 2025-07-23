@@ -1,10 +1,10 @@
 <template>
     <div class="text-white min-h-screen flex flex-1 justify-start z-10">
         <nav :class="{ 'w-40': navClick, 'w-16': !navClick }"
-            class="flex flex-col bg-slate-900 h-screen w-16 transition-all duration-300">
+            class="flex flex-col bg-gray-900 h-screen w-16 transition-all duration-300">
             <div
                 @click="onNavClick"
-                class="flex justify-center py-4 hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:cursor-pointer"
+                class="flex justify-center py-4 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-900 hover:cursor-pointer"
             >
                 <i class="fas fa-bars text-2xl"></i>
             </div>
@@ -17,7 +17,7 @@
                     v-if="navClick"
                     key="home"
                     href="/dashboard"
-                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
+                    class="w-full flex justify-center items-center space-x-2 border-t border-gray-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-900"
                 >
                     <i class="fas fa-home inline" />
                     <p class="inline select-none">Home</p>
@@ -26,7 +26,7 @@
                     v-if="navClick"
                     key="about"
                     href="/about"
-                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
+                    class="w-full flex justify-center items-center space-x-2 border-t border-gray-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-900"
                 >
                     <i class="fas fa-info-circle inline" />
                     <p class="inline select-none">About</p>
@@ -35,7 +35,7 @@
                     v-if="navClick"
                     key="profile"
                     href="/profile"
-                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
+                    class="w-full flex justify-center items-center space-x-2 border-t border-gray-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-900"
                 >
                     <i class="fas fa-user inline" />
                     <p class="inline select-none">Profile</p>
@@ -44,7 +44,7 @@
                     v-if="navClick"
                     key="settings"
                     href="/settings"
-                    class="w-full flex justify-center items-center space-x-2 border-t border-slate-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-slate-900 hover:to-slate-700 hover:bg-slate-700"
+                    class="w-full flex justify-center items-center space-x-2 border-t border-gray-700 py-4 hover:cursor-pointer hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-900"
                 >
                     <i class="fas fa-cog inline" />
                     <p class="inline select-none">Settings</p>

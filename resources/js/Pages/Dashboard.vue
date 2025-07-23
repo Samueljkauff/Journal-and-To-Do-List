@@ -1,6 +1,6 @@
 <template>
     <PageLayout>
-        <div class="w-full flex flex-col m-4 p-8 bg-slate-900 rounded-xl">
+        <div class="w-full flex flex-col m-4 p-8 bg-gray-900 rounded-xl">
             <TabMenu />
             <CalendarView />
         </div>
