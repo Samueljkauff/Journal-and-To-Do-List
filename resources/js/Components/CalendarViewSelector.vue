@@ -1,5 +1,5 @@
 <template>
-  <div class="text-white p-2 space-x-4 max-w-fit rounded-lg">
+  <div class="text-white px-2 my-auto space-x-4 max-w-fit rounded-lg">
     <span
       v-for="(view, idex) in views"
       :key="view.key"

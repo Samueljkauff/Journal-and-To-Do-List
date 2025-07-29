@@ -1,5 +1,5 @@
 <template>
-    <div class="text-xl max-w-[327px] m-auto bg-gray-900 rounded-xl p-6 flex flex-row items-center justify-center">
+    <div class="text-xl max-w-[327px] m-auto bg-gray-900 rounded-xl pb-6 flex flex-row items-center justify-center">
         <span
             v-for="tab in tabs"
             :key="tab.key"
