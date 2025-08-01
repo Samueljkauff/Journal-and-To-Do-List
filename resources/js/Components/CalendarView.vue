@@ -1,10 +1,17 @@
 <template>
     <div class="flex flex-col h-full">
       <div class="max-w-auto h-full border bg-gray-800 border-gray-700 rounded-lg flex flex-col">
-        <div class="flex justify-between m-2">
-          <CalendarViewSelector/>
-          <AddEventButton/>
-        </div>
+        <div class="grid grid-cols-3 items-center m-2">
+  <div class="justify-self-start">
+    <CalendarViewSelector/>
+  </div>
+  <p class="text-white font-bold text-center text-4xl">
+    {{ currentMonthString }}
+  </p>
+  <div class="justify-self-end">
+    <AddEventButton/>
+  </div>
+</div>
       <hr class="pb-7 h-px bg-gray-900 border-0"/>
       <MonthView />
       </div>

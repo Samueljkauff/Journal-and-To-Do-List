@@ -10,7 +10,7 @@
             <hr class="border-gray-700" />
             <div class="flex flex-col">
                 <label for="myInput" class="mx-5 mt-3 text-white">Enter Event</label>
-                <input type="text" id="myInput" v-model="formData.eventName"  placeholder="Enter Event" class="mx-5 rounded-md">
+                <input type="text" id="myInput" v-model.trim="formData.eventName"  placeholder="Enter Event" class="mx-5 rounded-md">
             </div>
             <div class="flex flex-col">
                 <label for="myInput" class="mx-5  mt-3 text-white">Select a Date</label>
@@ -22,7 +22,7 @@
             </div>
             <div class="flex flex-col">
                 <label for="myInput" class="mx-5  mt-3 text-white">Description</label>
-                <textarea type="time" id="myInput" v-model="formData.description"  placeholder="Enter Event" class="mx-5 rounded-md"/>
+                <textarea type="time" id="myInput" v-model.trim="formData.description"  placeholder="Enter Event" class="mx-5 rounded-md"/>
             </div>
             <form class="flex justify-end" method="dialog">
                 <button @click="closeDialog()" class="m-5 px-2 bg-green-500 rounded-md h-8 text-black hover:bg-green-400">

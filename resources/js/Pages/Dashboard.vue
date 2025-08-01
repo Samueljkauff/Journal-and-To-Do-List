@@ -2,12 +2,9 @@
   <PageLayout>
     <div class="w-full flex flex-col m-4 p-8 bg-gray-900 rounded-xl">
       <div class="flex">
-        <!-- <div class="pb-6 text-white text-3xl font-semibold">
-            {{ currentMonth }}
-        </div> -->
         <TabMenu />
       </div>
-      <CalendarView @get-month-string="getMonthString" />
+      <CalendarView />
     </div>
   </PageLayout>
 </template>
@@ -28,13 +25,9 @@ export default {
   },
   data() {
     return {
-      currentMonth: ''
     };
   },
   methods: {
-    getMonthString(monthString: string) {
-      this.currentMonth = monthString;
-    }
   }
 }
 </script>
