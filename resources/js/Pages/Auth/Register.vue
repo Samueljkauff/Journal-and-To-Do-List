@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -25,12 +21,15 @@ const submit = () => {
 <template>
     <GuestLayout>
         <Head title="Register" />
-
+        <p class="py-2 text-center text-white text-2xl font-bold">Register</p>
+        <hr class="border-gray-700"/>
+        <div class="px-8 py-4">
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <label class="block font-medium text-sm text-gray-300">Name</label>
 
-                <TextInput
+
+                <input
                     id="name"
                     type="text"
                     class="mt-1 block w-full"
@@ -40,13 +39,13 @@ const submit = () => {
                     autocomplete="name"
                 />
 
-                <InputError class="mt-2" :message="form.errors.name" />
+                <p class="text-sm mt-2 text-red-600">{{ form.errors.name }}</p>
             </div>
 
             <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+                <label class="block font-medium text-sm text-gray-300">Email</label>
 
-                <TextInput
+                <input
                     id="email"
                     type="email"
                     class="mt-1 block w-full"
@@ -55,13 +54,13 @@ const submit = () => {
                     autocomplete="username"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <p class="text-sm mt-2 text-red-600">{{ form.errors.email }}</p>
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <label class="block font-medium text-sm text-gray-300">Password</label>
 
-                <TextInput
+                <input
                     id="password"
                     type="password"
                     class="mt-1 block w-full"
@@ -70,16 +69,15 @@ const submit = () => {
                     autocomplete="new-password"
                 />
 
-                <InputError class="mt-2" :message="form.errors.password" />
+                <p class="text-sm mt-2 text-red-600">{{ form.errors.password }}</p>
             </div>
 
             <div class="mt-4">
-                <InputLabel
-                    for="password_confirmation"
-                    value="Confirm Password"
-                />
+                <label class="block font-medium text-sm text-gray-300">
+                    Confirm Password
+                </label>
 
-                <TextInput
+                <input
                     id="password_confirmation"
                     type="password"
                     class="mt-1 block w-full"
@@ -88,13 +86,10 @@ const submit = () => {
                     autocomplete="new-password"
                 />
 
-                <InputError
-                    class="mt-2"
-                    :message="form.errors.password_confirmation"
-                />
+                <p class="text-sm mt-2 text-red-600">{{ form.errors.password_confirmation }}</p>
             </div>
 
-            <div class="mt-4 flex items-center justify-end">
+            <div class="mt-4 flex items-center justify-between">
                 <Link
                     :href="route('login')"
                     class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -102,14 +97,15 @@ const submit = () => {
                     Already registered?
                 </Link>
 
-                <PrimaryButton
-                    class="ms-4"
+                <button
+                    class="ms-1 px-2 bg-green-500 rounded-md h-8 hover:bg-green-400"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Register
-                </PrimaryButton>
+            </button>
             </div>
         </form>
+        </div>
     </GuestLayout>
 </template>
