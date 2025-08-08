@@ -13,7 +13,6 @@
 import TabMenu from '@/Components/TabMenu.vue';
 import CalendarView from '@/Components/CalendarView.vue';
 import PageLayout from '@/Components/PageLayout.vue';
-import AddEventButton from '@/Components/AddEventButton.vue';
 
 export default {
   name: 'Dashboard',
@@ -21,7 +20,6 @@ export default {
     TabMenu,
     CalendarView,
     PageLayout,
-    AddEventButton
   },
   data() {
     return {

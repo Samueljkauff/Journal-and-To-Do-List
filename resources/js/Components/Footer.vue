@@ -20,23 +20,6 @@
     </footer>
 </template>
 
-<style scoped>
-.footer-slide-enter-active,
-.footer-slide-leave-active {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.footer-slide-enter-from,
-.footer-slide-leave-to {
-  opacity: 0;
-  transform: translateY(2rem);
-}
-.footer-slide-enter-to,
-.footer-slide-leave-from {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
-
 <script lang="ts">
 export default {
     name: 'Footer',
@@ -50,5 +33,29 @@ export default {
             this.clicked = !this.clicked;
         }
     }
+};
+</script>
+
+<script setup lang="ts">
+import { useForm } from '@inertiajs/vue3';
+
+const props = defineProps<{
+    email: string;
+    token: string;
+}>();
+
+const form = useForm({
+    token: props.token,
+    email: props.email,
+    password: '',
+    password_confirmation: '',
+});
+
+const submit = () => {
+    form.post(route('password.store'), {
+        onFinish: () => {
+            form.reset('password', 'password_confirmation');
+        },
+    });
 };
 </script>

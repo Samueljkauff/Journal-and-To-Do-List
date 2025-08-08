@@ -1,108 +1,114 @@
-<script setup lang="ts">
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+<template>
+  <section>
+    <p class="py-2 text-center text-white text-2xl font-bold">Profile Information</p>
+    <hr class="border-gray-700"/>
+    <div class="px-8 py-4">
+      <p class="mb-4 text-sm text-gray-500">
+        Update your account's profile information and email address.
+      </p>
+      
+      <form @submit.prevent="submit">
+        <div>
+          <label class="block font-medium text-sm text-gray-300">Name</label>
+          <input
+            id="name"
+            type="text"
+            class="mt-1 block w-full rounded-md"
+            v-model="form.name"
+            required
+            autofocus
+            autocomplete="name"
+          />
+          <p class="text-sm mt-2 text-red-600">{{ form.errors.name }}</p>
+        </div>
+
+        <div class="mt-4">
+          <label class="block font-medium text-sm text-gray-300">Email</label>
+          <input
+            id="email"
+            type="email"
+            class="mt-1 block w-full rounded-md"
+            v-model="form.email"
+            required
+            autocomplete="username"
+          />
+          <p class="text-sm mt-2 text-red-600">{{ form.errors.email }}</p>
+        </div>
+
+        <div v-if="mustVerifyEmail && user.email_verified_at === null" class="mt-4">
+          <p class="text-sm text-gray-500">
+            Your email address is unverified.
+            <Link
+              :href="route('verification.send')"
+              method="post"
+              as="button"
+              class="text-sm text-gray-400 underline hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+              Click here to re-send the verification email.
+            </Link>
+          </p>
+          <div
+            v-show="status === 'verification-link-sent'"
+            class="mt-2 text-sm font-medium text-green-400"
+          >
+            A new verification link has been sent to your email address.
+          </div>
+        </div>
+
+        <div class="mt-4 flex items-center justify-between">
+          <div class="flex items-center">
+            <span
+              v-if="form.recentlySuccessful"
+              class="text-sm text-green-400 transition ease-in-out"
+            >
+              Saved.
+            </span>
+          </div>
+          <button
+            class="px-4 py-2 bg-green-500 rounded-md hover:bg-green-400 font-medium"
+            :class="{ 'opacity-25': form.processing }"
+            :disabled="form.processing"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</template>
+
+<script lang="ts">
 import { Link, useForm, usePage } from '@inertiajs/vue3';
 
-defineProps<{
-    mustVerifyEmail?: Boolean;
-    status?: String;
-}>();
-
-const user = usePage().props.auth.user;
-
-const form = useForm({
-    name: user.name,
-    email: user.email,
-});
+export default {
+  name: 'ProfileInformation',
+  components: {
+    Link
+  },
+  props: {
+    mustVerifyEmail: {
+      type: Boolean,
+      default: false
+    },
+    status: {
+      type: String,
+      default: undefined
+    }
+  },
+  data() {
+    const user = usePage().props.auth.user;
+    return {
+      user,
+      form: useForm({
+        name: user.name,
+        email: user.email,
+      })
+    };
+  },
+  methods: {
+    submit() {
+      this.form.patch(route('profile.update'));
+    }
+  }
+};
 </script>
-
-<template>
-    <section>
-        <header>
-            <h2 class="text-lg font-medium text-gray-900">
-                Profile Information
-            </h2>
-
-            <p class="mt-1 text-sm text-gray-600">
-                Update your account's profile information and email address.
-            </p>
-        </header>
-
-        <form
-            @submit.prevent="form.patch(route('profile.update'))"
-            class="mt-6 space-y-6"
-        >
-            <div>
-                <InputLabel for="name" value="Name" />
-
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
-
-                <InputError class="mt-2" :message="form.errors.name" />
-            </div>
-
-            <div>
-                <InputLabel for="email" value="Email" />
-
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autocomplete="username"
-                />
-
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
-
-            <div v-if="mustVerifyEmail && user.email_verified_at === null">
-                <p class="mt-2 text-sm text-gray-800">
-                    Your email address is unverified.
-                    <Link
-                        :href="route('verification.send')"
-                        method="post"
-                        as="button"
-                        class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
-                        Click here to re-send the verification email.
-                    </Link>
-                </p>
-
-                <div
-                    v-show="status === 'verification-link-sent'"
-                    class="mt-2 text-sm font-medium text-green-600"
-                >
-                    A new verification link has been sent to your email address.
-                </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
-
-                <Transition
-                    enter-active-class="transition ease-in-out"
-                    enter-from-class="opacity-0"
-                    leave-active-class="transition ease-in-out"
-                    leave-to-class="opacity-0"
-                >
-                    <p
-                        v-if="form.recentlySuccessful"
-                        class="text-sm text-gray-600"
-                    >
-                        Saved.
-                    </p>
-                </Transition>
-            </div>
-        </form>
-    </section>
-</template>
