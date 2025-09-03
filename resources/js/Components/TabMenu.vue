@@ -3,7 +3,7 @@
         <span
             v-for="tab in tabs"
             :key="tab.key"
-            @click="setActiveTab(tab.key)"
+            @click="() => setActiveTab(tab.key)"
             class="flex justify-center items-center select-none cursor-pointer p-5 min-w-[109px] max-h-[28px] text-white hover:font-bold hover:bg-gradient-to-t hover:from-gray-700 hover:to-gray-900"
             :class="{
                 'border-b-2 border-white font-bold': activeTab === tab.key,
@@ -17,22 +17,25 @@
 
 <script lang="ts">
 import { Head } from '@inertiajs/vue3';
+import { PropType } from 'vue';
+import { Tab } from '@/Interfaces/TabMenu';
 
 export default {
     components: { Head },
-    data() {
-        return {
-            activeTab: 'present',
-            tabs: [
-                { key: 'past', label: 'Past' },
-                { key: 'present', label: 'Present' },
-                { key: 'future', label: 'Future' },
-            ],
-        };
+    emits: ['update:activeTab'],
+    props: {
+        activeTab: {
+            type: String,
+            required: true
+        },
+        tabs: {
+            type: Array as PropType<Tab[]>,
+            required: true,
+        }
     },
     methods: {
         setActiveTab(tab: string) {
-            this.activeTab = tab;
+            this.$emit('update:activeTab', tab);
         }
     },
 };

@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import DeleteUserForm from './Partials/DeleteUserForm.vue';
-import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
-import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
-import { Head } from '@inertiajs/vue3';
-import PageLayout from '@/Components/PageLayout.vue';
-
-defineProps<{
-    mustVerifyEmail?: boolean;
-    status?: string;
-}>();
-</script>
-
 <template>
     <Head title="Profile" />
 
@@ -40,3 +27,16 @@ defineProps<{
             </div>
     </PageLayout>
 </template>
+
+<script setup lang="ts">
+import DeleteUserForm from './Partials/DeleteUserForm.vue';
+import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
+import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
+import { Head } from '@inertiajs/vue3';
+import PageLayout from '@/Components/PageLayout.vue';
+
+defineProps<{
+    mustVerifyEmail?: boolean;
+    status?: string;
+}>();
+</script>
